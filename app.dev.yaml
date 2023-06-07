@@ -1,0 +1,16 @@
+
+script: node ./app.js
+cwd: ./
+watch: true
+name: stats:23333
+ignore_watch: [data, public, package.json, package-lock.json, node_modules, .git, .gitignore, app.dev.yaml, app.yaml]
+exec_mode: fork
+
+error_file: ./data/logs/error.log
+out_file: ./data/logs/out.log
+merge_logs: true
+min_uptime: 60s
+max_restarts: 1
+max_memory_restart: 300M
+env:
+  NODE_ENV: development

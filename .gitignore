@@ -1,0 +1,16 @@
+
+.Spotlight-V100
+.Trashes
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.idea
+.vscode
+*.env
+
+node_modules/
+data/logs/
+data/ssl/
+public/upload/
+package-lock.json
