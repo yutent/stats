@@ -15,7 +15,6 @@ export default class Github extends Controller {
   async toplangsAction() {
     let { username, count = 6 } = this.request.get()
     let token = this.context.get('token')
-
     let { data } = await fetch('https://api.github.com/graphql', {
       headers: {
         Authorization: 'Bearer ' + token,
@@ -50,6 +49,12 @@ query {
     let dict = {}
     let langs = []
 
+    if (count > 16) {
+      count = 16
+    } else if (count < 2) {
+      count = 2
+    }
+
     nodes.forEach(it => {
       for (let lang of it.languages.edges) {
         if (dict[lang.node.name]) {
@@ -67,8 +72,6 @@ query {
     langs.sort((a, b) => b.size - a.size)
 
     this.response.set('Content-Type', 'image/svg+xml')
-    this.response.end(render({}))
-
-    // this.response.send(200, { langs: langs.slice(0, count) })
+    this.response.end(render({ langs: langs.slice(0, count) }))
   }
 }
