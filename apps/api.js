@@ -10,6 +10,8 @@ import { render } from '../lib/svg.js'
 export default class Github extends Controller {
   __main__() {
     //
+    let ua = this.request.header('user-agent').toLowerCase()
+    this.IS_MOBILE = ua.includes('iphone') || ua.includes('android')
   }
 
   async toplangsAction() {
@@ -72,6 +74,6 @@ query {
     langs.sort((a, b) => b.size - a.size)
 
     this.response.set('Content-Type', 'image/svg+xml')
-    this.response.end(render({ langs: langs.slice(0, count) }))
+    this.response.end(render({ langs: langs.slice(0, count) }, this.IS_MOBILE))
   }
 }
