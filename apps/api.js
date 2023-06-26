@@ -74,6 +74,6 @@ query {
     langs.sort((a, b) => b.size - a.size)
 
     this.response.set('Content-Type', 'image/svg+xml')
-    this.response.end(render({ langs: langs.slice(0, count) }, this.IS_MOBILE))
+    this.response.end(render({ title: `${username}'s Top Languages`, langs: langs.slice(0, count) }, this.IS_MOBILE))
   }
 }
