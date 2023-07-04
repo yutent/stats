@@ -8,7 +8,7 @@
 ![top-langs](https://stats.wkit.fun/api/toplangs?username=${用户名}&count=${要显示的语言数量})
 ```
 
-![demo](./preview/demo.png)
+<img style="max-width:720px" src="https://stats.wkit.fun/api/toplangs?username=yutent&count=10">
 
 
 ### 接口
